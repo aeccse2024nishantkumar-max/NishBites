@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NishBites - Admin Panel</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 25px; margin: 0; }
+    h1 { color: #d35400; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    th, td { padding: 12px 15px; border-bottom: 1px solid #eee; text-align: left; }
+    th { background-color: #e67e22; color: white; font-weight: bold; }
+    tr:hover { background-color: #fdf2e9; }
+    .badge { background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>🍔 NishBites - Received Orders</h1>
+  <p>Live orders dashboard:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Item</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td><b>#{{ order[0] }}</b></td>
+        <td>{{ order[1] }}</td>
+        <td><a href="tel:{{ order[2] }}" style="color: #2980b9; text-decoration: none; font-weight: bold;">📞 {{ order[2] }}</a></td>
+        <td>{{ order[3] }}</td>
+        <td><span class="badge">{{ order[4] }}</span></td>
+        <td>{{ order[5] }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6" style="text-align: center; padding: 20px; color: #888;">Abhi tak koi naya order nahi aaya hai.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

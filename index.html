@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NishBites - Food & Drinks</title>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            🍔 <span>NishBites</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <button class="cart-btn" onclick="showCart()">
+            🛒 Cart <span id="cartCount">0</span>
+        </button>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Delicious Food,<br>Delivered Fast! 🍔</h1>
+
+            <p>
+                Welcome to <strong>NishBites</strong> — your place for
+                burgers, pizza, snacks, cold drinks and more.
+            </p>
+
+            <button onclick="scrollToMenu()">
+                Order Now 🍕
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+
+        <h2>What are you craving?</h2>
+
+        <div class="category-container">
+
+            <button onclick="filterFood('all')">
+                🍽️ All
+            </button>
+
+            <button onclick="filterFood('burger')">
+                🍔 Burgers
+            </button>
+
+            <button onclick="filterFood('pizza')">
+                🍕 Pizza
+            </button>
+
+            <button onclick="filterFood('snacks')">
+                🍟 Snacks
+            </button>
+
+            <button onclick="filterFood('drinks')">
+                🥤 Drinks
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+    <section id="menu">
+
+        <h2>Our Menu</h2>
+
+        <div class="menu-container">
+
+
+            <!-- BURGER -->
+            <div class="food-card burger">
+
+                <div class="food-image">
+                    🍔
+                </div>
+
+                <h3>Classic Burger</h3>
+
+                <p>Fresh burger with crispy veggies and tasty sauce.</p>
+
+                <h4>₹99</h4>
+
+                <button onclick="addToCart('Classic Burger', 99)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- CHEESE BURGER -->
+            <div class="food-card burger">
+
+                <div class="food-image">
+                    🍔
+                </div>
+
+                <h3>Cheese Burger</h3>
+
+                <p>Juicy burger loaded with delicious cheese.</p>
+
+                <h4>₹129</h4>
+
+                <button onclick="addToCart('Cheese Burger', 129)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- PIZZA -->
+            <div class="food-card pizza">
+
+                <div class="food-image">
+                    🍕
+                </div>
+
+                <h3>Cheese Pizza</h3>
+
+                <p>Hot pizza with extra cheese and delicious toppings.</p>
+
+                <h4>₹199</h4>
+
+                <button onclick="addToCart('Cheese Pizza', 199)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- FRENCH FRIES -->
+            <div class="food-card snacks">
+
+                <div class="food-image">
+                    🍟
+                </div>
+
+                <h3>French Fries</h3>
+
+                <p>Crispy golden fries with special seasoning.</p>
+
+                <h4>₹79</h4>
+
+                <button onclick="addToCart('French Fries', 79)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- MOMOS -->
+            <div class="food-card snacks">
+
+                <div class="food-image">
+                    🥟
+                </div>
+
+                <h3>Veg Momos</h3>
+
+                <p>Soft and delicious steamed vegetable momos.</p>
+
+                <h4>₹89</h4>
+
+                <button onclick="addToCart('Veg Momos', 89)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- COLD DRINK -->
+            <div class="food-card drinks">
+
+                <div class="food-image">
+                    🥤
+                </div>
+
+                <h3>Cold Drink</h3>
+
+                <p>Chilled refreshing soft drink.</p>
+
+                <h4>₹49</h4>
+
+                <button onclick="addToCart('Cold Drink', 49)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+
+        <h2>About NishBites</h2>
+
+        <p>
+            NishBites is a simple online food ordering platform where
+            customers can explore food, add items to their cart and place
+            orders easily.
+        </p>
+
+    </section>
+
+
+    <!-- CART POPUP -->
+    <div id="cartBox" class="cart-box">
+
+        <div class="cart-content">
+
+            <button class="close-btn" onclick="closeCart()">
+                ✖
+            </button>
+
+            <h2>🛒 Your Cart</h2>
+
+            <div id="cartItems">
+                <p>Your cart is empty.</p>
+            </div>
+
+            <h3>
+                Total: ₹<span id="cartTotal">0</span>
+            </h3>
+
+            <button onclick="placeOrder()" class="order-btn">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>🍔 NishBites</h3>
+
+        <p>Good Food • Good Mood</p>
+
+        <p>© 2026 NishBites. All Rights Reserved.</p>
+
+    </footer>
+
+<!-- Order Form Section -->
+<section id="order-form-section" style="padding: 30px; background: #ffffff; max-width: 480px; margin: 40px auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; color: #d35400; margin-bottom: 20px;">📦 Place Your Order</h2>
+  
+  <form action="/order" method="POST" style="display: flex; flex-direction: column; gap: 14px;">
+    <div>
+      <label style="display: block; margin-bottom: 4px; font-weight: bold;">Aapka Naam:</label>
+      <input type="text" name="name" placeholder="Full name likhein" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+    </div>
+
+    <div>
+      <label style="display: block; margin-bottom: 4px; font-weight: bold;">Phone Number:</label>
+      <input type="tel" name="phone" placeholder="Mobile number" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+    </div>
+
+    <div>
+      <label style="display: block; margin-bottom: 4px; font-weight: bold;">Delivery Address:</label>
+      <textarea name="address" placeholder="Flat / Room, Street, Landmark" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; height: 75px; box-sizing: border-box;"></textarea>
+    </div>
+
+    <div>
+      <label style="display: block; margin-bottom: 4px; font-weight: bold;">Select Item:</label>
+      <select name="item" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+        <option value="Burger">Burger</option>
+        <option value="Pizza">Pizza</option>
+        <option value="Cold Drink">Cold Drink</option>
+        <option value="Snacks Combo">Snacks Combo</option>
+      </select>
+    </div>
+
+    <button type="submit" style="padding: 12px; background: #e67e22; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px;">
+      Confirm Order Now
+    </button>
+  </form>
+</section>
+    <!-- JavaScript file -->
+    <script src="app.js"></script>
+
+</body>
+</html>
